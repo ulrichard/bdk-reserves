@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         rust:
-          - 1.75.0 # STABLE
+          - 1.81.0 # current
           - 1.63.0 # MSRV
     steps:
       - name: checkout
@@ -38,8 +38,8 @@ jobs:
       - name: Pin dependencies for MSRV
         if: matrix.rust == '1.63.0'
         run: |
-          cargo update -p home:0.5.9 --precise 0.5.5
-          cargo update -p tokio:1.40.0 --precise 1.38.1
+          cargo update -p home:0.5.11 --precise 0.5.5
+          cargo update -p tokio:1.43.0 --precise 1.38.1
           cargo update -p cc --precise 1.0.105
       - name: Build
         run: cargo build
